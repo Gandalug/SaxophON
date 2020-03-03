@@ -46,8 +46,7 @@
 
     <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
         <StackPanel>
-            <Label Content="{Binding Name}" />
-            <Image Width="40"
+            <Image Width="60"
                    Source="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
         </StackPanel>
     </DataTemplate>

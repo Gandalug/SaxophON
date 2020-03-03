@@ -7,8 +7,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Saxophon.ViewModels"
         Title="MainWindow"
-        Width="400"
-        Height="600"
+        Topmost="True"
+        Width="776"
+        Height="1000"
         mc:Ignorable="d">
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
@@ -18,36 +19,47 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.Resources>
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        </Grid.Resources>
         <DockPanel Grid.Row="0"
                    Background="LightGray"
                    LastChildFill="True">
             <Border BorderBrush="Gray"
                     DockPanel.Dock="Top">
-                <StackPanel Background="Gray"
+                <WrapPanel Background="Gray"
                             Orientation="Horizontal">
                     <controls:ImageButton Width="80"
-                                          Command="{Binding AddNoteCommand}"
+                                          Command="{Binding NewFileCommand}"
                                           Content="Add"
                                           ImageSource="../Resources/Add_16x.png" />
+                    <controls:ImageButton Width="80"
+                                          Command="{Binding LoadFileCommand}"
+                                          Content="Add"
+                                          ImageSource="../Resources/Folder_16x.png" />
+                    <controls:ImageButton Width="80"
+                                          Command="{Binding SaveCommand}"
+                                          Content="Save"
+                                          ImageSource="../Resources/Save_16x.png" />
+                    <controls:ImageButton Width="80"
+                                          Command="{Binding CreateDocumentCommand}"
+                                          Content="Save"
+                                          ImageSource="../Resources/Document_16x.png" />
                     <controls:ImageButton Width="80"
                                           Command="{Binding DeleteNoteCommand}"
                                           Content="Delete"
                                           ImageSource="../Resources/Cancel_16x.png" />
-                    <controls:ImageButton Width="80"
-                                          Command="{Binding SaveCommand}"
-                                          Content="Delete"
-                                          ImageSource="../Resources/Save_16x.png" />
-                </StackPanel>
+                </WrapPanel>
             </Border>
-            <Grid Margin="20" Background="White">
-                <Grid.Resources>
-                    <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-                </Grid.Resources>
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ItemsControl ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.RowSpan="2">
+                <ItemsControl Grid.RowSpan="2" 
+                              Margin="20"
+                              Background="White"
+                              ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel IsItemsHost="True" />
@@ -90,7 +102,7 @@
                 </Grid>
             </Grid>
         </DockPanel>
-        <!--<Border Grid.Row="0"
+        <Border Grid.Row="0"
                 Background="White"
                 Opacity="0.8"
                 Visibility="{Binding IsOverlayVisible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BoolToVisibilityConverter}}" />
@@ -101,7 +113,7 @@
                 <Image Width="50"
                        Margin="0,0,0,10"
                        Opacity="0.5"
-                       Source="../Images/spinner.png">
+                       Source="../Resources/spinner.png">
                     <Image.RenderTransform>
                         <RotateTransform x:Name="Transform" Angle="0" CenterX="50" CenterY="50" />
                     </Image.RenderTransform>
@@ -127,8 +139,8 @@
                     </Image.Style>
                 </Image>
                 <TextBlock FontSize="18"
-                           Text="Waiting for Mock Service..." />
+                           Text="Loading..." />
             </StackPanel>
-        </Border>-->
+        </Border>
     </Grid>
 </Window>

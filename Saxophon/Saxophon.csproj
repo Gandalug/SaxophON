@@ -117,5 +117,14 @@
   <ItemGroup>
     <Resource Include="Resources\Save_16x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\spinner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Folder_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Document_16x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
