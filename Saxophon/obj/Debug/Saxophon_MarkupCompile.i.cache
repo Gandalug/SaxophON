@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\_git\SaxophON\Saxophon\App.xaml
-1-809265419
+2-458148792
 
-111512101001
+131732280564
 13-1454942768
-Views\MainWindowView.xaml;
+Views\DataTemplates.xaml;Views\MainWindowView.xaml;
 
-False
+True
 
