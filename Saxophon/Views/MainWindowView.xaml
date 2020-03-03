@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Saxophon.ViewModels"
-        xmlns:models="clr-namespace:Saxophon.Models"
         Title="MainWindow"
         SizeToContent="WidthAndHeight"
         mc:Ignorable="d">
@@ -12,36 +11,27 @@
         <viewModels:MainWindowViewModel />
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type models:Tone}">
-            <TextBlock Text="{Binding shift}"/>
+        <DataTemplate DataType="{x:Type viewModels:NoteViewModel}">
+            <StackPanel>
+                <Label Content="{Binding Name}" />
+                <Image Width="40"
+                       Source="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
+            </StackPanel>
         </DataTemplate>
     </Window.Resources>
     <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Top">
-            <GroupBox Padding="4"
-                      Header="Note">
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Verschiebung: " />
-                    <ComboBox Width="100"
-                              ItemsSource="{Binding Shifts}"
-                              SelectedItem="{Binding SelectedShift}" />
-                    <Label Margin="10,0,0,0"
-                           Content="Länge: " />
-                    <ComboBox Width="100"
-                              ItemsSource="{Binding Durations}"
-                              SelectedItem="{Binding Durations[0]}" />
-                    <Label Margin="10,0,0,0"
-                           Content="Note: " />
-                    <ComboBox Width="40"
-                              ItemsSource="{Binding Notes}" />
-                    <Button Margin="10,0,0,0"
-                            Padding="4"
-                            Content="Hinzufügen" 
-                            Command="{Binding AddToneCommand}"/>
-                </StackPanel>
-            </GroupBox>
-            <ListView ItemsSource="{Binding Tones}" Height="400"/>
-        </StackPanel>
+        <Button Command="{Binding AddNoteCommand}"
+                Content="Add Note"
+                DockPanel.Dock="Top" />
+        <ItemsControl DockPanel.Dock="Top"
+                      ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
         <StatusBar Padding="4,0"
                    Background="White"
                    BorderBrush="LightGray"

@@ -1,62 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using Saxophon.Models;
+using System.Collections.ObjectModel;
+using System.Windows.Media.Imaging;
 using Saxophon.Resources;
 
 namespace Saxophon.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public List<string> Shifts => Enum.GetNames(typeof(Resources.Shifts)).ToList();
-
-        public List<string> Durations => Enum.GetNames(typeof(Resources.Durations)).ToList();
-
-        public List<string> Notes => Enum.GetNames(typeof(Resources.Notes)).ToList();
-
-        private List<Tone> _tones;
-        private string _selectedShift;
-
+        private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
         public MainWindowViewModel()
         {
-            Tones = new List<Tone>();
-            AddToneCommand = new RelayCommand(ExecuteAddToneCommand, CanExecuteAddToneCommand);
+            AddNoteCommand = new RelayCommand(ExecuteAddNoteCommand, CanExecuteAddNoteCommand);
         }
 
-        public List<Tone> Tones
+        public ObservableCollection<NoteViewModel> Notes
         {
-            get => _tones;
+            get => _notes;
             set
             {
-                _tones = value;
-                OnPropertyChanged(nameof(Tones));
+                _notes = value;
+                OnPropertyChanged(nameof(Notes));
             }
         }
 
-        public string SelectedShift
-        {
-            get => _selectedShift;
-            set
-            {
-                _selectedShift = value;
-                OnPropertyChanged(nameof(SelectedShift));
-            }
-        }
+        public RelayCommand AddNoteCommand { get; set; }
 
-        public RelayCommand AddToneCommand { get; set; }
-
-        private bool CanExecuteAddToneCommand(object parameter)
+        private bool CanExecuteAddNoteCommand(object parameter)
         {
             return true;
         }
 
-        private void ExecuteAddToneCommand(object parameter)
+        private void ExecuteAddNoteCommand(object parameter)
         {
-            var tone = new Tone();
-            Enum.TryParse(SelectedShift, out Shifts shift);
-            tone.shift = shift;
-            Tones.Add(tone);
+            var image = new BitmapImage(new Uri("pack://application:,,,/Saxophon;component/Resources/horns.png"));
+            Notes.Add(new NoteViewModel{ Name = "c", Image = image});
         }
     }
 }
