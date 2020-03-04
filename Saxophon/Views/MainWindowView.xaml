@@ -7,9 +7,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Saxophon.ViewModels"
         Title="MainWindow"
-        Topmost="True"
         Width="776"
         Height="1000"
+        Topmost="false"
         mc:Ignorable="d">
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
@@ -21,42 +21,52 @@
     <Grid>
         <Grid.Resources>
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
         </Grid.Resources>
         <DockPanel Grid.Row="0"
                    Background="LightGray"
                    LastChildFill="True">
             <Border BorderBrush="Gray"
                     DockPanel.Dock="Top">
-                <WrapPanel Background="Gray"
-                            Orientation="Horizontal">
-                    <controls:ImageButton Width="80"
-                                          Command="{Binding NewFileCommand}"
-                                          Content="Add"
-                                          ImageSource="../Resources/Add_16x.png" />
-                    <controls:ImageButton Width="80"
-                                          Command="{Binding LoadFileCommand}"
-                                          Content="Add"
-                                          ImageSource="../Resources/Folder_16x.png" />
-                    <controls:ImageButton Width="80"
-                                          Command="{Binding SaveCommand}"
-                                          Content="Save"
-                                          ImageSource="../Resources/Save_16x.png" />
-                    <controls:ImageButton Width="80"
-                                          Command="{Binding CreateDocumentCommand}"
-                                          Content="Save"
-                                          ImageSource="../Resources/Document_16x.png" />
-                    <controls:ImageButton Width="80"
-                                          Command="{Binding DeleteNoteCommand}"
-                                          Content="Delete"
-                                          ImageSource="../Resources/Cancel_16x.png" />
-                </WrapPanel>
+                <StackPanel>
+                    <StackPanel Background="Gray"
+                                Orientation="Horizontal">
+                        <controls:ImageButton Width="80"
+                                              Command="{Binding NewFileCommand}"
+                                              Content="Add"
+                                              ImageSource="../Resources/Add_16x.png" />
+                        <controls:ImageButton Width="80"
+                                              Command="{Binding LoadFileCommand}"
+                                              Content="Add"
+                                              ImageSource="../Resources/Folder_16x.png" />
+                        <controls:ImageButton Width="80"
+                                              Command="{Binding SaveCommand}"
+                                              Content="Save"
+                                              ImageSource="../Resources/Save_16x.png" />
+                        <controls:ImageButton Width="80"
+                                              Command="{Binding CreateDocumentCommand, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                              Content="Save"
+                                              Opacity="{Binding IsCooledDown, Converter={StaticResource BoolToOpacityConverter}}"
+                                              ImageSource="../Resources/Document_16x.png" />
+                        <controls:ImageButton Width="80"
+                                              Command="{Binding DeleteNoteCommand}"
+                                              Content="Delete"
+                                              ImageSource="../Resources/Cancel_16x.png" />
+                    </StackPanel>
+                    <WrapPanel x:Name="ButtonPanel" Background="DarkGray" Visibility="{Binding IsButtonPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        <Button Width="80"
+                                Command="{Binding DeleteNoteCommand}"
+                                Style="{StaticResource NoteButton}">
+                        </Button>
+                    </WrapPanel>
+                </StackPanel>
             </Border>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ItemsControl Grid.RowSpan="2" 
+                <ItemsControl Grid.RowSpan="2"
                               Margin="20"
                               Background="White"
                               ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">

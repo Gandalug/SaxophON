@@ -9,7 +9,10 @@ namespace Saxophon.Resources
 
         private Predicate<object> _canExecute;
 
-        public RelayCommand(Action<object> execute) : this(execute, DefaultCanExecute)
+        private event EventHandler CanExecuteChangedInternal;
+
+        public RelayCommand(Action<object> execute)
+            : this(execute, DefaultCanExecute)
         {
         }
 
@@ -24,11 +27,13 @@ namespace Saxophon.Resources
             add
             {
                 CommandManager.RequerySuggested += value;
+                CanExecuteChangedInternal += value;
             }
 
             remove
             {
                 CommandManager.RequerySuggested -= value;
+                CanExecuteChangedInternal -= value;
             }
         }
 
@@ -40,6 +45,26 @@ namespace Saxophon.Resources
         public void Execute(object parameter)
         {
             _execute(parameter);
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            CommandManager.InvalidateRequerySuggested();
+        }
+
+        public void OnCanExecuteChanged()
+        {
+            EventHandler handler = CanExecuteChangedInternal;
+            if (handler != null)
+            {
+                handler.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public void Destroy()
+        {
+            _canExecute = _ => false;
+            _execute = _ => { };
         }
 
         private static bool DefaultCanExecute(object parameter)

@@ -56,7 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Models\Note.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Page Include="Views\DataTemplates.xaml">
       <SubType>Designer</SubType>
@@ -106,7 +108,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Resource Include="Resources\c1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Add_16x.png" />
@@ -125,6 +127,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Document_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LeerGroß.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SaxophonLeer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
