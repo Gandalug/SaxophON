@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Saxophon.Models;
@@ -29,6 +30,7 @@ namespace Saxophon.ViewModels
             SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
             CreateDocumentCommand = new RelayCommand(ExecuteCreateDocumentCommand, CanExecuteCreateDocumentCommand);
             DeleteNoteCommand = new RelayCommand(ExecuteDeleteNoteCommand, CanExecuteDeleteNoteCommand);
+            AddNoteCommand = new RelayCommand(ExecuteAddNoteCommand, CanExecuteAddNoteCommand);
             
             if (!Directory.Exists(_saveDirectoryPath))
             {
@@ -141,27 +143,67 @@ namespace Saxophon.ViewModels
                         }
                         else if (Notes[count].Note == Note.c1)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/c1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/c1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.cis1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/ci1.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (Notes[count].Note == Note.d1)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/c1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/d1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.dis1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/d1.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (Notes[count].Note == Note.e1)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/c1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/e1.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (Notes[count].Note == Note.f1)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/c1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/f1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.fis1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/fis1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.g1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/g1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.gis1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/gis1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.a1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/a1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.b1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/b1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (Notes[count].Note == Note.h1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/h1.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/c1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/SacophonLeer.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
 
@@ -192,6 +234,62 @@ namespace Saxophon.ViewModels
             timer.Interval = 10000;
             timer.Elapsed += OnTimedCooldownEvent;
             timer.Start();
+        }
+
+        public Note GetEnumNote(string param)
+        {
+            if(param.Equals("c1"))
+            {
+                return Note.c1;
+            }
+            if(param.Equals("cis1"))
+            {
+                return Note.cis1;
+            }
+            if(param.Equals("d1"))
+            {
+                return Note.d1;
+            }
+            if(param.Equals("dis1"))
+            {
+                return Note.dis1;
+            }
+            if(param.Equals("e1"))
+            {
+                return Note.e1;
+            }
+            if(param.Equals("f1"))
+            {
+                return Note.f1;
+            }
+            if(param.Equals("fis1"))
+            {
+                return Note.fis1;
+            }
+            if(param.Equals("g1"))
+            {
+                return Note.g1;
+            }
+            if(param.Equals("gis1"))
+            {
+                return Note.gis1;
+            }
+            if(param.Equals("a1"))
+            {
+                return Note.a1;
+            }
+            if(param.Equals("b1"))
+            {
+                return Note.b1;
+            }
+            if(param.Equals("h1"))
+            {
+                return Note.h1;
+            }
+            else
+            {
+                return Note.leer;
+            }
         }
 
         public RelayCommand NewFileCommand { get; set; }
@@ -251,8 +349,6 @@ namespace Saxophon.ViewModels
 
         private void ExecuteDeleteNoteCommand(object parameter)
         {
-            var image = new BitmapImage(new Uri("pack://application:,,,/Saxophon;component/Resources/c1.png"));
-            Notes.Add(new NoteViewModel{ Note = Note.d1, Image = image});
         }
 
         public RelayCommand SaveCommand { get; set; }
@@ -267,6 +363,21 @@ namespace Saxophon.ViewModels
             IsMessageVisible = false;
             PopupText = "Note sheet was created";
             IsMessageVisible = true;
+        }
+
+        public RelayCommand AddNoteCommand { get; set; }
+
+        private bool CanExecuteAddNoteCommand(object parameter)
+        {
+            return true;
+        }
+
+        private void ExecuteAddNoteCommand(object parameter)
+        {
+            var param = (string) parameter;
+            var note = GetEnumNote(param);
+            var image = new BitmapImage(new Uri($"pack://application:,,,/Saxophon;component/Resources/Saxophone/{param}.png"));
+            Notes.Add(new NoteViewModel{Note = note, Image = image});
         }
     }
 }

@@ -7,9 +7,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Saxophon.ViewModels"
         Title="MainWindow"
-        Width="776"
+        Width="556"
         Height="1000"
-        Topmost="false"
+        Topmost="True"
         mc:Ignorable="d">
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
@@ -44,20 +44,66 @@
                                               Content="Save"
                                               ImageSource="../Resources/Save_16x.png" />
                         <controls:ImageButton Width="80"
-                                              Command="{Binding CreateDocumentCommand, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                                              Command="{Binding CreateDocumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                               Content="Save"
-                                              Opacity="{Binding IsCooledDown, Converter={StaticResource BoolToOpacityConverter}}"
-                                              ImageSource="../Resources/Document_16x.png" />
+                                              ImageSource="../Resources/Document_16x.png"
+                                              Opacity="{Binding IsCooledDown, Converter={StaticResource BoolToOpacityConverter}}" />
                         <controls:ImageButton Width="80"
                                               Command="{Binding DeleteNoteCommand}"
                                               Content="Delete"
                                               ImageSource="../Resources/Cancel_16x.png" />
                     </StackPanel>
-                    <WrapPanel x:Name="ButtonPanel" Background="DarkGray" Visibility="{Binding IsButtonPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
-                        <Button Width="80"
-                                Command="{Binding DeleteNoteCommand}"
-                                Style="{StaticResource NoteButton}">
-                        </Button>
+                    <WrapPanel x:Name="ButtonPanel"
+                               Background="DarkGray"
+                               Visibility="{Binding IsButtonPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="c1"
+                                             ImageSource="../Resources/Notes/c1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="cis1"
+                                             ImageSource="../Resources/Notes/cis1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="d1"
+                                             ImageSource="../Resources/Notes/d1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="dis1"
+                                             ImageSource="../Resources/Notes/dis1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="e1"
+                                             ImageSource="../Resources/Notes/e1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="f1"
+                                             ImageSource="../Resources/Notes/f1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="fis1"
+                                             ImageSource="../Resources/Notes/fis1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="g1"
+                                             ImageSource="../Resources/Notes/g1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="gis1"
+                                             ImageSource="../Resources/Notes/gis1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="a1"
+                                             ImageSource="../Resources/Notes/a1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="b1"
+                                             ImageSource="../Resources/Notes/b1.png" />
+                        <controls:NoteButton Width="80"
+                                             Command="{Binding AddNoteCommand}"
+                                             CommandParameter="h1"
+                                             ImageSource="../Resources/Notes/h1.png" />
                     </WrapPanel>
                 </StackPanel>
             </Border>

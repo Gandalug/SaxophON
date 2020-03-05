@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\NoteButton.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
@@ -108,9 +109,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\c1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Add_16x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +131,41 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\SaxophonLeer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Saxophone\e1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Notes\a1.png" />
+    <Resource Include="Resources\Notes\b1.png" />
+    <Resource Include="Resources\Notes\c1.png" />
+    <Resource Include="Resources\Notes\cis1.png" />
+    <Resource Include="Resources\Notes\d1.png" />
+    <Resource Include="Resources\Notes\dis1.png" />
+    <Resource Include="Resources\Notes\f1.png" />
+    <Resource Include="Resources\Notes\fis1.png" />
+    <Resource Include="Resources\Notes\g1.png" />
+    <Resource Include="Resources\Notes\gis1.png" />
+    <Resource Include="Resources\Notes\h1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\KeyG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Saxophone\a1.png" />
+    <Resource Include="Resources\Saxophone\b1.png" />
+    <Resource Include="Resources\Saxophone\c1.png" />
+    <Resource Include="Resources\Saxophone\cis1.png" />
+    <Resource Include="Resources\Saxophone\d1.png" />
+    <Resource Include="Resources\Saxophone\dis1.png" />
+    <Resource Include="Resources\Saxophone\f1.png" />
+    <Resource Include="Resources\Saxophone\fis1.png" />
+    <Resource Include="Resources\Saxophone\g1.png" />
+    <Resource Include="Resources\Saxophone\gis1.png" />
+    <Resource Include="Resources\Saxophone\h1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Notes\e1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
