@@ -146,7 +146,7 @@ namespace Saxophon.ViewModels
                         }
                         else if (Notes[count].Note == Note.cis1)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/ci1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/cis1.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (Notes[count].Note == Note.d1)
@@ -156,7 +156,7 @@ namespace Saxophon.ViewModels
                         }
                         else if (Notes[count].Note == Note.dis1)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/d1.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/dis1.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (Notes[count].Note == Note.e1)
