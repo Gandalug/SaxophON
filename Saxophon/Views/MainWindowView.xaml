@@ -7,8 +7,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:Saxophon.ViewModels"
         Title="MainWindow"
-        Width="556"
-        Height="1000"
+        MaxWidth="556"
+        MinWidth="556"
+        MaxHeight="745"
         Topmost="True"
         mc:Ignorable="d">
     <Window.DataContext>
@@ -24,7 +25,7 @@
             <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
         </Grid.Resources>
         <DockPanel Grid.Row="0"
-                   Background="LightGray"
+                   Background="DarkGray"
                    LastChildFill="True">
             <Border BorderBrush="Gray"
                     DockPanel.Dock="Top">
@@ -54,8 +55,7 @@
                                               ImageSource="../Resources/Cancel_16x.png" />
                     </StackPanel>
                     <WrapPanel x:Name="ButtonPanel"
-                               Background="DarkGray"
-                               Visibility="{Binding IsButtonPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                               Background="DarkGray">
                         <controls:NoteButton Width="80"
                                              Command="{Binding AddNoteCommand}"
                                              CommandParameter="c1"
@@ -107,21 +107,24 @@
                     </WrapPanel>
                 </StackPanel>
             </Border>
-            <Grid>
+            <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="24" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <ItemsControl Grid.RowSpan="2"
-                              Margin="20"
+                <ScrollViewer Grid.RowSpan="2"
+                              Grid.Row="0"
+                              Margin="10"
                               Background="White"
-                              ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel IsItemsHost="True" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
+                              Visibility="{Binding IsButtonPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                    <ItemsControl ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
                 <Grid Row="0">
                     <Border Width="Auto"
                             HorizontalAlignment="Right"
