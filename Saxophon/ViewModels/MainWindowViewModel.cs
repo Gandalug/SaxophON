@@ -17,14 +17,11 @@ namespace Saxophon.ViewModels
         private bool _isMessageVisible;
         private bool _isOverlayVisible;
         private bool _isCooledDown;
-        private bool _isButtonPanelVisible;
         private string _popupText;
         private readonly string _saveDirectoryPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/SaxophON";
         private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
         public MainWindowViewModel()
         {
-            NewFileCommand = new RelayCommand(ExecuteNewFileCommand, CanExecuteNewFileCommand);
-            LoadFileCommand = new RelayCommand(ExecuteLoadFileCommand, CanExecuteLoadFileCommand);
             SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
             CreateDocumentCommand = new RelayCommand(ExecuteCreateDocumentCommand, CanExecuteCreateDocumentCommand);
             DeleteNoteCommand = new RelayCommand(ExecuteDeleteNoteCommand, CanExecuteDeleteNoteCommand);
@@ -65,16 +62,6 @@ namespace Saxophon.ViewModels
             {
                 _isCooledDown = value;
                 OnPropertyChanged(nameof(IsCooledDown));
-            }
-        }
-
-        public bool IsButtonPanelVisible
-        {
-            get => _isButtonPanelVisible;
-            set
-            {
-                _isButtonPanelVisible = value;
-                OnPropertyChanged(nameof(IsButtonPanelVisible));
             }
         }
 
@@ -289,39 +276,7 @@ namespace Saxophon.ViewModels
                 return Note.leer;
             }
         }
-
-        public RelayCommand NewFileCommand { get; set; }
-
-        private bool CanExecuteNewFileCommand(object parameter)
-        {
-            return true;
-        }
-
-        private void ExecuteNewFileCommand(object parameter)
-        {
-            if (IsButtonPanelVisible)
-            {
-                IsButtonPanelVisible = false;
-            }
-            else
-            {
-                IsButtonPanelVisible = true;
-            }
-        }
-
-        public RelayCommand LoadFileCommand { get; set; }
-
-        private bool CanExecuteLoadFileCommand(object parameter)
-        {
-            return true;
-        }
-
-        private void ExecuteLoadFileCommand(object parameter)
-        {
-            var image = new BitmapImage(new Uri("pack://application:,,,/Saxophon;component/Resources/Folder_16x.png"));
-            Notes.Add(new NoteViewModel{ Note = Note.a1, Image = image});
-        }
-
+        
         public RelayCommand CreateDocumentCommand { get; set; }
 
         private bool CanExecuteCreateDocumentCommand(object parameter)
@@ -342,11 +297,12 @@ namespace Saxophon.ViewModels
 
         private bool CanExecuteDeleteNoteCommand(object parameter)
         {
-            return true;
+            return Notes.Any();
         }
 
         private void ExecuteDeleteNoteCommand(object parameter)
         {
+            Notes.RemoveAt(Notes.Count -1);
         }
 
         public RelayCommand SaveCommand { get; set; }

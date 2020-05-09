@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\_git\SaxophON\Saxophon\obj\Debug\
+C:\Users\Gandas\Documents\repos\SaxophON\Saxophon\obj\Debug\
 Saxophon
 none
 false
 DEBUG;TRACE
-C:\_git\SaxophON\Saxophon\App.xaml
+C:\Users\Gandas\Documents\repos\SaxophON\Saxophon\App.xaml
 2-458148792
 
-16-2031965049
-13-1454942768
+16-1947789421
+15937445650
 Views\DataTemplates.xaml;Views\MainWindowView.xaml;
 
-False
+True
 

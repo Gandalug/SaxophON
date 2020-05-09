@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="clr-namespace:Saxophon.ViewModels"
     Title="MainWindow"
+    Width="1200"
     Topmost="True"
     mc:Ignorable="d">
     <Window.DataContext>
@@ -29,7 +30,7 @@
             <Border BorderBrush="Gray" DockPanel.Dock="Top">
                 <StackPanel>
                     <StackPanel Background="Gray" Orientation="Horizontal">
-                        <controls:ImageButton
+                        <!--<controls:ImageButton
                             Width="80"
                             Command="{Binding NewFileCommand}"
                             Content="Add"
@@ -43,7 +44,7 @@
                             Width="80"
                             Command="{Binding SaveCommand}"
                             Content="Save"
-                            ImageSource="../Resources/Save_16x.png" />
+                            ImageSource="../Resources/Save_16x.png" />-->
                         <controls:ImageButton
                             Width="80"
                             Command="{Binding CreateDocumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
@@ -52,7 +53,7 @@
                             Opacity="{Binding IsCooledDown, Converter={StaticResource BoolToOpacityConverter}}" />
                         <controls:ImageButton
                             Width="80"
-                            Command="{Binding DeleteNoteCommand}"
+                            Command="{Binding DeleteNoteCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                             Content="Delete"
                             ImageSource="../Resources/Cancel_16x.png" />
                     </StackPanel>
@@ -117,63 +118,130 @@
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
                             ImageSource="../Resources/Notes/h1.png" />
+                        <!--  Dummy Buttons  -->
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Notes/h1.png" />
                     </WrapPanel>
                 </StackPanel>
             </Border>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="24" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <ItemsControl
-                    Grid.RowSpan="2"
-                    Margin="10"
-                    Background="White"
-                    ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
-                    Visibility="{Binding IsButtonPanelVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel IsItemsHost="True" />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
-                <Grid Row="0">
-                    <Border
-                        Width="Auto"
-                        HorizontalAlignment="Right"
-                        Background="LightGreen"
-                        BorderBrush="DarkGray"
-                        BorderThickness="1"
-                        Visibility="{Binding IsMessageVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
-                        <TextBlock Margin="10,3" Text="{Binding PopupText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <Border.Style>
-                            <Style TargetType="{x:Type Border}">
-                                <Style.Triggers>
-                                    <Trigger Property="Visibility" Value="Visible">
-                                        <Trigger.EnterActions>
-                                            <BeginStoryboard>
-                                                <Storyboard>
-                                                    <DoubleAnimation
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        From="0.0"
-                                                        To="1.0"
-                                                        Duration="0:0:0.5" />
-                                                    <DoubleAnimation
-                                                        BeginTime="0:0:3"
-                                                        Storyboard.TargetProperty="Opacity"
-                                                        From="1.0"
-                                                        To="0.0"
-                                                        Duration="0:0:0.5" />
-                                                </Storyboard>
-                                            </BeginStoryboard>
-                                        </Trigger.EnterActions>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                    </Border>
+            <ScrollViewer>
+                <Grid Width="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ItemsControl
+                        Grid.RowSpan="2"
+                        Margin="10"
+                        Background="White"
+                        ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                    <Grid Row="0">
+                        <Border
+                            Width="Auto"
+                            HorizontalAlignment="Right"
+                            Background="LightGreen"
+                            BorderBrush="DarkGray"
+                            BorderThickness="1"
+                            Visibility="{Binding IsMessageVisible, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                            <TextBlock Margin="10,3" Text="{Binding PopupText, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Visibility" Value="Visible">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetProperty="Opacity"
+                                                            From="0.0"
+                                                            To="1.0"
+                                                            Duration="0:0:0.5" />
+                                                        <DoubleAnimation
+                                                            BeginTime="0:0:3"
+                                                            Storyboard.TargetProperty="Opacity"
+                                                            From="1.0"
+                                                            To="0.0"
+                                                            Duration="0:0:0.5" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </ScrollViewer>
         </DockPanel>
         <Border
             Grid.Row="0"
