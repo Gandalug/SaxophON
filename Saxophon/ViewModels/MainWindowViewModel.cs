@@ -18,12 +18,15 @@ namespace Saxophon.ViewModels
         private bool _isOverlayVisible;
         private bool _isCooledDown;
         private string _popupText;
+        private Instrument _currentInstrument = Instrument.Saxophon;
         private readonly string _saveDirectoryPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/SaxophON";
         private ObservableCollection<NoteViewModel> _notes = new ObservableCollection<NoteViewModel>();
         public MainWindowViewModel()
         {
-            SaveCommand = new RelayCommand(ExecuteSaveCommand, CanExecuteSaveCommand);
+            ChangeInstrumentCommand = new RelayCommand(ExecuteChangeInstrumentCommand, CanExecuteChangeInstrumentCommand);
+            PopMessageCommand = new RelayCommand(ExecutePopMessageCommand, CanExecutePopMessageCommand);
             CreateDocumentCommand = new RelayCommand(ExecuteCreateDocumentCommand, CanExecuteCreateDocumentCommand);
+            DeleteAllCommand = new RelayCommand(ExecuteDeleteAllCommand, CanExecuteDeleteAllCommand);
             DeleteNoteCommand = new RelayCommand(ExecuteDeleteNoteCommand, CanExecuteDeleteNoteCommand);
             AddNoteCommand = new RelayCommand(ExecuteAddNoteCommand, CanExecuteAddNoteCommand);
             
@@ -72,6 +75,16 @@ namespace Saxophon.ViewModels
             {
                 _popupText = value;
                 OnPropertyChanged(nameof(PopupText));
+            }
+        }
+
+        public Instrument CurrentInstrument 
+        { 
+            get => _currentInstrument;
+            set
+            {
+                _currentInstrument = value;
+                OnPropertyChanged(nameof(CurrentInstrument));
             }
         }
 
@@ -277,11 +290,41 @@ namespace Saxophon.ViewModels
             }
         }
         
+        public RelayCommand ChangeInstrumentCommand { get; set; }
+
+        private bool CanExecuteChangeInstrumentCommand(object parameter)
+        {
+            return true;
+        }
+
+        private void ExecuteChangeInstrumentCommand(object parameter)
+        {
+            var messageBoxResult = MessageBox.Show("Wenn sie das Instrument wechseln gehen alle bisherigen Änderungen verloren.", "Warnung", MessageBoxButton.OKCancel);
+
+            if (messageBoxResult == MessageBoxResult.OK)
+            {
+                Notes.Clear();
+                if (CurrentInstrument == Instrument.Querflöte)
+                {
+                    CurrentInstrument = Instrument.Saxophon;                
+                }
+                else if (CurrentInstrument == Instrument.Saxophon)
+                {
+                    CurrentInstrument = Instrument.Querflöte;               
+                }
+            }
+        }
+
         public RelayCommand CreateDocumentCommand { get; set; }
 
         private bool CanExecuteCreateDocumentCommand(object parameter)
         {
-            return IsCooledDown;
+            if(IsCooledDown && Notes.Any())
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void ExecuteCreateDocumentCommand(object parameter)
@@ -291,6 +334,36 @@ namespace Saxophon.ViewModels
             timer.Interval = 100;
             timer.Elapsed += OnTimedEvent;
             timer.Start();
+        }
+        public RelayCommand PopMessageCommand { get; set; }
+
+        private bool CanExecutePopMessageCommand(object parameter)
+        {
+            return true;
+        }
+
+        private void ExecutePopMessageCommand(object parameter)
+        {
+            IsMessageVisible = false;
+            PopupText = "Note sheet was created";
+            IsMessageVisible = true;
+        }
+
+        public RelayCommand DeleteAllCommand { get; set; }
+
+        private bool CanExecuteDeleteAllCommand(object parameter)
+        {
+            return Notes.Any();
+        }
+
+        private void ExecuteDeleteAllCommand(object parameter)
+        {
+            var messageBoxResult = MessageBox.Show("Wollen sie wirklich alle löschen?", "Warnung", MessageBoxButton.YesNo);
+
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Notes.Clear();
+            }
         }
 
         public RelayCommand DeleteNoteCommand { get; set; }
@@ -305,20 +378,6 @@ namespace Saxophon.ViewModels
             Notes.RemoveAt(Notes.Count -1);
         }
 
-        public RelayCommand SaveCommand { get; set; }
-
-        private bool CanExecuteSaveCommand(object parameter)
-        {
-            return true;
-        }
-
-        private void ExecuteSaveCommand(object parameter)
-        {
-            IsMessageVisible = false;
-            PopupText = "Note sheet was created";
-            IsMessageVisible = true;
-        }
-
         public RelayCommand AddNoteCommand { get; set; }
 
         private bool CanExecuteAddNoteCommand(object parameter)
@@ -330,8 +389,27 @@ namespace Saxophon.ViewModels
         {
             var param = (string) parameter;
             var note = GetEnumNote(param);
-            var image = new BitmapImage(new Uri($"pack://application:,,,/Saxophon;component/Resources/Saxophone/{param}.png"));
-            Notes.Add(new NoteViewModel{Note = note, Image = image});
+
+            if(CurrentInstrument == Instrument.Saxophon)
+            {
+                if(Notes.Count >= 40)
+                {
+                    MessageBox.Show("Es passt leider nicht mehr auf diese Seite.","Warnung");
+                    return;
+                }
+                var image = new BitmapImage(new Uri($"pack://application:,,,/Saxophon;component/Resources/Saxophone/{param}.png"));
+                Notes.Add(new SaxophoneNoteViewModel{Note = note, Image = image});
+            }
+            else if(CurrentInstrument == Instrument.Querflöte)
+            {
+                if (Notes.Count >= 440)
+                {
+                    MessageBox.Show("Es passt leider nicht mehr auf diese Seite.", "Warnung");
+                    return;
+                }
+                var image = new BitmapImage(new Uri($"pack://application:,,,/Saxophon;component/Resources/Querfloete/{param}.png"));
+                Notes.Add(new FluteNoteViewModel { Note = note, Image = image });
+            }
         }
     }
 }

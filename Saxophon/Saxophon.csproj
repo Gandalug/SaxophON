@@ -65,6 +65,8 @@
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\InstrumentToOrientationConverter.cs" />
+    <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Page Include="Views\DataTemplates.xaml">
@@ -81,8 +83,10 @@
     </Compile>
     <Compile Include="Resources\RelayCommand.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\FluteNoteViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NoteViewModel.cs" />
+    <Compile Include="ViewModels\SaxophoneNoteViewModel.cs" />
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -143,17 +147,17 @@
     <Resource Include="Resources\Saxophone\e1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Notes\a1.png" />
-    <Resource Include="Resources\Notes\b1.png" />
-    <Resource Include="Resources\Notes\c1.png" />
-    <Resource Include="Resources\Notes\cis1.png" />
-    <Resource Include="Resources\Notes\d1.png" />
-    <Resource Include="Resources\Notes\dis1.png" />
-    <Resource Include="Resources\Notes\f1.png" />
-    <Resource Include="Resources\Notes\fis1.png" />
-    <Resource Include="Resources\Notes\g1.png" />
-    <Resource Include="Resources\Notes\gis1.png" />
-    <Resource Include="Resources\Notes\h1.png" />
+    <Resource Include="Resources\Saxophone\Notes\a1.png" />
+    <Resource Include="Resources\Saxophone\Notes\b1.png" />
+    <Resource Include="Resources\Saxophone\Notes\c1.png" />
+    <Resource Include="Resources\Saxophone\Notes\cis1.png" />
+    <Resource Include="Resources\Saxophone\Notes\d1.png" />
+    <Resource Include="Resources\Saxophone\Notes\dis1.png" />
+    <Resource Include="Resources\Saxophone\Notes\f1.png" />
+    <Resource Include="Resources\Saxophone\Notes\fis1.png" />
+    <Resource Include="Resources\Saxophone\Notes\g1.png" />
+    <Resource Include="Resources\Saxophone\Notes\gis1.png" />
+    <Resource Include="Resources\Saxophone\Notes\h1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\KeyG.png" />
@@ -172,7 +176,34 @@
     <Resource Include="Resources\Saxophone\h1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Notes\e1.png" />
+    <Resource Include="Resources\Saxophone\Notes\e1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Querfloete\Notes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\a1.png" />
+    <Resource Include="Resources\Querfloete\a2.png" />
+    <Resource Include="Resources\Querfloete\b1.png" />
+    <Resource Include="Resources\Querfloete\b2.png" />
+    <Resource Include="Resources\Querfloete\c2.png" />
+    <Resource Include="Resources\Querfloete\c3.png" />
+    <Resource Include="Resources\Querfloete\d1.png" />
+    <Resource Include="Resources\Querfloete\d2.png" />
+    <Resource Include="Resources\Querfloete\dis1.png" />
+    <Resource Include="Resources\Querfloete\dis2.png" />
+    <Resource Include="Resources\Querfloete\e1.png" />
+    <Resource Include="Resources\Querfloete\e2.png" />
+    <Resource Include="Resources\Querfloete\f1.png" />
+    <Resource Include="Resources\Querfloete\f2.png" />
+    <Resource Include="Resources\Querfloete\fis1.png" />
+    <Resource Include="Resources\Querfloete\fis2.png" />
+    <Resource Include="Resources\Querfloete\g1.png" />
+    <Resource Include="Resources\Querfloete\g2.png" />
+    <Resource Include="Resources\Querfloete\gis1.png" />
+    <Resource Include="Resources\Querfloete\gis2.png" />
+    <Resource Include="Resources\Querfloete\h1.png" />
+    <Resource Include="Resources\Querfloete\h2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

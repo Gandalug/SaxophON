@@ -22,6 +22,7 @@
         <Grid.Resources>
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
+            <converters:InstrumentToOrientationConverter x:Key="InstrumentToVisibilityConverter" />
         </Grid.Resources>
         <DockPanel
             Grid.Row="0"
@@ -34,27 +35,27 @@
                             Width="80"
                             Command="{Binding NewFileCommand}"
                             Content="Add"
-                            ImageSource="../Resources/Add_16x.png" />
+                            ImageSource="../Resources/Add_16x.png" />-->
                         <controls:ImageButton
                             Width="80"
-                            Command="{Binding LoadFileCommand}"
-                            Content="Add"
-                            ImageSource="../Resources/Folder_16x.png" />
-                        <controls:ImageButton
-                            Width="80"
-                            Command="{Binding SaveCommand}"
-                            Content="Save"
-                            ImageSource="../Resources/Save_16x.png" />-->
+                            Command="{Binding ChangeInstrumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Content="{Binding CurrentInstrument}"
+                            ImageSource="../Resources/Save_16x.png" />
                         <controls:ImageButton
                             Width="80"
                             Command="{Binding CreateDocumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                            Content="Save"
+                            Content="Speichern"
                             ImageSource="../Resources/Document_16x.png"
                             Opacity="{Binding IsCooledDown, Converter={StaticResource BoolToOpacityConverter}}" />
                         <controls:ImageButton
                             Width="80"
+                            Command="{Binding DeleteAllCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Content="Alles löschen"
+                            ImageSource="../Resources/Cancel_16x.png" />
+                        <controls:ImageButton
+                            Width="80"
                             Command="{Binding DeleteNoteCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                            Content="Delete"
+                            Content="Letztes löschen"
                             ImageSource="../Resources/Cancel_16x.png" />
                     </StackPanel>
                     <WrapPanel x:Name="ButtonPanel" Background="DarkGray">
@@ -62,133 +63,133 @@
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="c1"
-                            ImageSource="../Resources/Notes/c1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/c1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="cis1"
-                            ImageSource="../Resources/Notes/cis1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/cis1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="d1"
-                            ImageSource="../Resources/Notes/d1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/d1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="dis1"
-                            ImageSource="../Resources/Notes/dis1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/dis1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="e1"
-                            ImageSource="../Resources/Notes/e1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/e1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="f1"
-                            ImageSource="../Resources/Notes/f1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/f1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="fis1"
-                            ImageSource="../Resources/Notes/fis1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/fis1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="g1"
-                            ImageSource="../Resources/Notes/g1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/g1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="gis1"
-                            ImageSource="../Resources/Notes/gis1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/gis1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="a1"
-                            ImageSource="../Resources/Notes/a1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/a1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="b1"
-                            ImageSource="../Resources/Notes/b1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/b1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <!--  Dummy Buttons  -->
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="h1"
-                            ImageSource="../Resources/Notes/h1.png" />
+                            ImageSource="../Resources/Saxophone/Notes/h1.png" />
                     </WrapPanel>
                 </StackPanel>
             </Border>
             <ScrollViewer>
-                <Grid Width="500">
+                <Grid Width="520">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="24" />
                         <RowDefinition Height="*" />
@@ -200,7 +201,10 @@
                         ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel IsItemsHost="True" />
+                                <WrapPanel
+                                    MaxHeight="800"
+                                    IsItemsHost="True"
+                                    Orientation="{Binding CurrentInstrument, Converter={StaticResource InstrumentToVisibilityConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>

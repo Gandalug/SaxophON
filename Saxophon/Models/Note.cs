@@ -14,6 +14,19 @@
         a1,
         b1,
         h1,
+        c2,
+        cis2,
+        d2,
+        dis2,
+        e2,
+        f2,
+        fis2,
+        g2,
+        gis2,
+        a2,
+        b2,
+        h2,
+        c3,
         leer
     }
 }

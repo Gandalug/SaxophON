@@ -1,5 +1,5 @@
-﻿using System.Windows.Media.Imaging;
-using Saxophon.Models;
+﻿using Saxophon.Models;
+using System.Windows.Media.Imaging;
 
 namespace Saxophon.ViewModels
 {
