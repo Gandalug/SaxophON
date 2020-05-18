@@ -27,6 +27,14 @@
         b2,
         h2,
         c3,
+        es1,
+        ges1,
+        as1,
+        ais1,
+        es2,
+        ges2,
+        as2,
+        ais2,
         leer
     }
 }

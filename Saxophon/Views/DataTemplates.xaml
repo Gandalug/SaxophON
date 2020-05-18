@@ -27,6 +27,7 @@
                         <Trigger Property="IsDefaulted" Value="True" />
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="LightBlue" />
+                            <Setter TargetName="border" Property="Opacity" Value="0.8" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="border" Property="BorderBrush" Value="SkyBlue" />

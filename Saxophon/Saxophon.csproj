@@ -66,6 +66,7 @@
     <Compile Include="Converters\BoolToOpacityConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\InstrumentToOrientationConverter.cs" />
+    <Compile Include="Converters\InstrumentToVisibilityConverter.cs" />
     <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -82,6 +83,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Resources\RelayCommand.cs" />
+    <Compile Include="Services\PngMergeService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\FluteNoteViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -141,10 +143,7 @@
     <Resource Include="Resources\LeerGroß.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\SaxophonLeer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Saxophone\e1.png" />
+    <Resource Include="Resources\Saxophone\Notes\SaxophonLeer.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Saxophone\Notes\a1.png" />
@@ -163,12 +162,100 @@
     <Resource Include="Resources\KeyG.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Saxophone\Notes\e1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Saxophone\Notes\a2.png" />
+    <Resource Include="Resources\Saxophone\Notes\b2.png" />
+    <Resource Include="Resources\Saxophone\Notes\c2.png" />
+    <Resource Include="Resources\Saxophone\Notes\c3.png" />
+    <Resource Include="Resources\Saxophone\Notes\d2.png" />
+    <Resource Include="Resources\Saxophone\Notes\dis2.png" />
+    <Resource Include="Resources\Saxophone\Notes\e2.png" />
+    <Resource Include="Resources\Saxophone\Notes\f2.png" />
+    <Resource Include="Resources\Saxophone\Notes\fis2.png" />
+    <Resource Include="Resources\Saxophone\Notes\g2.png" />
+    <Resource Include="Resources\Saxophone\Notes\gis2.png" />
+    <Resource Include="Resources\Saxophone\Notes\h2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\a1.png" />
+    <Resource Include="Resources\Querfloete\a2.png" />
+    <Resource Include="Resources\Querfloete\c2.png" />
+    <Resource Include="Resources\Querfloete\c3.png" />
+    <Resource Include="Resources\Querfloete\d1.png" />
+    <Resource Include="Resources\Querfloete\d2.png" />
+    <Resource Include="Resources\Querfloete\e1.png" />
+    <Resource Include="Resources\Querfloete\e2.png" />
+    <Resource Include="Resources\Querfloete\f1.png" />
+    <Resource Include="Resources\Querfloete\f2.png" />
+    <Resource Include="Resources\Querfloete\g1.png" />
+    <Resource Include="Resources\Querfloete\g2.png" />
+    <Resource Include="Resources\Querfloete\h1.png" />
+    <Resource Include="Resources\Querfloete\h2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\Template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\b1.png" />
+    <Resource Include="Resources\Querfloete\b2.png" />
+    <Resource Include="Resources\Querfloete\dis1.png" />
+    <Resource Include="Resources\Querfloete\dis2.png" />
+    <Resource Include="Resources\Querfloete\fis1.png" />
+    <Resource Include="Resources\Querfloete\fis2.png" />
+    <Resource Include="Resources\Querfloete\gis1.png" />
+    <Resource Include="Resources\Querfloete\gis2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Backward_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CSWorkflowManagerActivity_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\Notes\a1.png" />
+    <Resource Include="Resources\Querfloete\Notes\a2.png" />
+    <Resource Include="Resources\Querfloete\Notes\ais1.png" />
+    <Resource Include="Resources\Querfloete\Notes\ais2.png" />
+    <Resource Include="Resources\Querfloete\Notes\as1.png" />
+    <Resource Include="Resources\Querfloete\Notes\as2.png" />
+    <Resource Include="Resources\Querfloete\Notes\b1.png" />
+    <Resource Include="Resources\Querfloete\Notes\b2.png" />
+    <Resource Include="Resources\Querfloete\Notes\c2.png" />
+    <Resource Include="Resources\Querfloete\Notes\c3.png" />
+    <Resource Include="Resources\Querfloete\Notes\d1.png" />
+    <Resource Include="Resources\Querfloete\Notes\d2.png" />
+    <Resource Include="Resources\Querfloete\Notes\dis1.png" />
+    <Resource Include="Resources\Querfloete\Notes\dis2.png" />
+    <Resource Include="Resources\Querfloete\Notes\e1.png" />
+    <Resource Include="Resources\Querfloete\Notes\e2.png" />
+    <Resource Include="Resources\Querfloete\Notes\es1.png" />
+    <Resource Include="Resources\Querfloete\Notes\es2.png" />
+    <Resource Include="Resources\Querfloete\Notes\f1.png" />
+    <Resource Include="Resources\Querfloete\Notes\f2.png" />
+    <Resource Include="Resources\Querfloete\Notes\fis1.png" />
+    <Resource Include="Resources\Querfloete\Notes\fis2.png" />
+    <Resource Include="Resources\Querfloete\Notes\g1.png" />
+    <Resource Include="Resources\Querfloete\Notes\g2.png" />
+    <Resource Include="Resources\Querfloete\Notes\ges1.png" />
+    <Resource Include="Resources\Querfloete\Notes\ges2.png" />
+    <Resource Include="Resources\Querfloete\Notes\gis1.png" />
+    <Resource Include="Resources\Querfloete\Notes\gis2.png" />
+    <Resource Include="Resources\Querfloete\Notes\h1.png" />
+    <Resource Include="Resources\Querfloete\Notes\h2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Saxophone\Notes\cis2.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Saxophone\a1.png" />
     <Resource Include="Resources\Saxophone\b1.png" />
     <Resource Include="Resources\Saxophone\c1.png" />
     <Resource Include="Resources\Saxophone\cis1.png" />
     <Resource Include="Resources\Saxophone\d1.png" />
     <Resource Include="Resources\Saxophone\dis1.png" />
+    <Resource Include="Resources\Saxophone\e1.png" />
     <Resource Include="Resources\Saxophone\f1.png" />
     <Resource Include="Resources\Saxophone\fis1.png" />
     <Resource Include="Resources\Saxophone\g1.png" />
@@ -176,34 +263,32 @@
     <Resource Include="Resources\Saxophone\h1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Saxophone\Notes\e1.png" />
+    <Resource Include="Resources\Saxophone\a2.png" />
+    <Resource Include="Resources\Saxophone\b2.png" />
+    <Resource Include="Resources\Saxophone\c2.png" />
+    <Resource Include="Resources\Saxophone\c3.png" />
+    <Resource Include="Resources\Saxophone\cis2.png" />
+    <Resource Include="Resources\Saxophone\d2.png" />
+    <Resource Include="Resources\Saxophone\dis2.png" />
+    <Resource Include="Resources\Saxophone\e2.png" />
+    <Resource Include="Resources\Saxophone\f2.png" />
+    <Resource Include="Resources\Saxophone\fis2.png" />
+    <Resource Include="Resources\Saxophone\g2.png" />
+    <Resource Include="Resources\Saxophone\gis2.png" />
+    <Resource Include="Resources\Saxophone\h2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Querfloete\Notes\" />
+    <Resource Include="Resources\Saxophone\SaxophonLeer.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Querfloete\a1.png" />
-    <Resource Include="Resources\Querfloete\a2.png" />
-    <Resource Include="Resources\Querfloete\b1.png" />
-    <Resource Include="Resources\Querfloete\b2.png" />
-    <Resource Include="Resources\Querfloete\c2.png" />
-    <Resource Include="Resources\Querfloete\c3.png" />
-    <Resource Include="Resources\Querfloete\d1.png" />
-    <Resource Include="Resources\Querfloete\d2.png" />
-    <Resource Include="Resources\Querfloete\dis1.png" />
-    <Resource Include="Resources\Querfloete\dis2.png" />
-    <Resource Include="Resources\Querfloete\e1.png" />
-    <Resource Include="Resources\Querfloete\e2.png" />
-    <Resource Include="Resources\Querfloete\f1.png" />
-    <Resource Include="Resources\Querfloete\f2.png" />
-    <Resource Include="Resources\Querfloete\fis1.png" />
-    <Resource Include="Resources\Querfloete\fis2.png" />
-    <Resource Include="Resources\Querfloete\g1.png" />
-    <Resource Include="Resources\Querfloete\g2.png" />
-    <Resource Include="Resources\Querfloete\gis1.png" />
-    <Resource Include="Resources\Querfloete\gis2.png" />
-    <Resource Include="Resources\Querfloete\h1.png" />
-    <Resource Include="Resources\Querfloete\h2.png" />
+    <Resource Include="Resources\Querfloete\ais1.png" />
+    <Resource Include="Resources\Querfloete\ais2.png" />
+    <Resource Include="Resources\Querfloete\es1.png" />
+    <Resource Include="Resources\Querfloete\es2.png" />
+    <Resource Include="Resources\Querfloete\ges1.png" />
+    <Resource Include="Resources\Querfloete\ges2.png" />
+    <Resource Include="Resources\Querfloete\as1.png" />
+    <Resource Include="Resources\Querfloete\as2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
