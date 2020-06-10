@@ -29,7 +29,30 @@
             Grid.Row="0"
             Background="DarkGray"
             LastChildFill="True">
-            <Border BorderBrush="Gray" DockPanel.Dock="Top">
+            <ScrollViewer DockPanel.Dock="Right">
+                <Grid Width="520">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ItemsControl
+                        Grid.RowSpan="2"
+                        Height="800"
+                        Margin="10"
+                        Background="White"
+                        ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel
+                                    MaxHeight="800"
+                                    IsItemsHost="True"
+                                    Orientation="{Binding CurrentInstrument, Converter={StaticResource InstrumentToOrientationConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+            <Border BorderBrush="Gray">
                 <StackPanel>
                     <StackPanel Background="Gray" Orientation="Horizontal">
                         <controls:ImageButton
@@ -383,28 +406,6 @@
                     </WrapPanel>
                 </StackPanel>
             </Border>
-            <ScrollViewer>
-                <Grid Width="520">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="24" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <ItemsControl
-                        Grid.RowSpan="2"
-                        Margin="10"
-                        Background="White"
-                        ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel
-                                    MaxHeight="800"
-                                    IsItemsHost="True"
-                                    Orientation="{Binding CurrentInstrument, Converter={StaticResource InstrumentToOrientationConverter}, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </Grid>
-            </ScrollViewer>
         </DockPanel>
         <Border
             Grid.Row="0"
