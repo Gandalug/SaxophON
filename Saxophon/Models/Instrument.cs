@@ -2,7 +2,8 @@
 {
     public enum Instrument
     {
-        Querflöte,
-        Saxophon
+        Dudelsack,
+        Saxophon,
+        Querflöte
     }
 }

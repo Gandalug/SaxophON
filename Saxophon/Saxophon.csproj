@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\RadioImageButton.cs" />
     <Compile Include="Controls\NoteButton.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Converters\BoolToOpacityConverter.cs" />
@@ -83,7 +84,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Resources\RelayCommand.cs" />
+    <Compile Include="Services\NoteEnumerationService.cs" />
     <Compile Include="Services\PngMergeService.cs" />
+    <Compile Include="ViewModels\BagpipesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\FluteNoteViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -289,6 +292,50 @@
     <Resource Include="Resources\Querfloete\ges2.png" />
     <Resource Include="Resources\Querfloete\as1.png" />
     <Resource Include="Resources\Querfloete\as2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\Notes\d3.png" />
+    <Resource Include="Resources\Querfloete\Notes\e3.png" />
+    <Resource Include="Resources\Querfloete\Notes\f3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\d3.png" />
+    <Resource Include="Resources\Querfloete\e3.png" />
+    <Resource Include="Resources\Querfloete\f3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dudelsack\Notes\a1.png" />
+    <Resource Include="Resources\Dudelsack\Notes\a2.png" />
+    <Resource Include="Resources\Dudelsack\Notes\c2.png" />
+    <Resource Include="Resources\Dudelsack\Notes\d2.png" />
+    <Resource Include="Resources\Dudelsack\Notes\e2.png" />
+    <Resource Include="Resources\Dudelsack\Notes\f2.png" />
+    <Resource Include="Resources\Dudelsack\Notes\g2.png" />
+    <Resource Include="Resources\Dudelsack\Notes\h1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dudelsack\Notes\g1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dudelsack\Template.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dudelsack\a1.png" />
+    <Resource Include="Resources\Dudelsack\a2.png" />
+    <Resource Include="Resources\Dudelsack\c2.png" />
+    <Resource Include="Resources\Dudelsack\d2.png" />
+    <Resource Include="Resources\Dudelsack\e2.png" />
+    <Resource Include="Resources\Dudelsack\f2.png" />
+    <Resource Include="Resources\Dudelsack\g1.png" />
+    <Resource Include="Resources\Dudelsack\g2.png" />
+    <Resource Include="Resources\Dudelsack\h1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sax_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bagpipes_16x.png" />
+    <Resource Include="Resources\Flute_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

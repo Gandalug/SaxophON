@@ -185,7 +185,7 @@ namespace Saxophon.Services
                 bitmapEncoder.Save(stream);
             }
         }
-        
+
         public void CreateFlutePng(ObservableCollection<NoteViewModel> notes, string _fileName)
         {
             BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/Template.png"),
@@ -399,6 +399,99 @@ namespace Saxophon.Services
                     BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
             }
             return frame;
+        }
+        public void CreateBagpipesPng(ObservableCollection<NoteViewModel> notes, string _fileName)
+        {
+            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/Template.png"),
+                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+
+            int imageWidth = frame.PixelWidth;
+            int imageHeight = frame.PixelHeight;
+
+            int count = 0;
+
+            int countRows = 4;
+            int countColumns = 10;
+
+            DrawingVisual drawingVisual = new DrawingVisual();
+            using (DrawingContext drawingContext = drawingVisual.RenderOpen())
+            {
+                for (int i = 0; i < countRows; i++)
+                {
+                    for (int j = 0; j < countColumns; j++)
+                    {
+                        if (notes.Count <= count)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/Template.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.a1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/a1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.a2)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/a2.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.c2)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/c2.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.d2)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/d2.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.e2)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/e2.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.f2)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/f2.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.g1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/g1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.g2)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/g2.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else if (notes[count].Note == Note.h1)
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/h1.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+                        else
+                        {
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/Template.png"),
+                                BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+                        }
+
+                        drawingContext.DrawImage(frame, new Rect(imageWidth * j, imageHeight * i, imageWidth, imageHeight));
+                        count++;
+                    }
+                }
+            }
+
+            RenderTargetBitmap targetBitmap = new RenderTargetBitmap(imageWidth * countColumns, imageHeight * countRows, 96, 96, PixelFormats.Pbgra32);
+            targetBitmap.Render(drawingVisual);
+
+            PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
+            bitmapEncoder.Frames.Add(BitmapFrame.Create(targetBitmap));
+
+            using (Stream stream = File.Create(_fileName))
+            {
+                bitmapEncoder.Save(stream);
+            }
         }
     }
 }

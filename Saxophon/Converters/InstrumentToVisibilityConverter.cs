@@ -21,6 +21,10 @@ namespace Saxophon.Converters
             {           
                 return instrument == Instrument.Saxophon ? Visibility.Visible : Visibility.Collapsed;
             }
+            else if(para == "Bag")
+            {
+                return instrument == Instrument.Dudelsack ? Visibility.Visible : Visibility.Collapsed;
+            }
 
             return Visibility.Visible;
         }

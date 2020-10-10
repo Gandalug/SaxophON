@@ -60,11 +60,25 @@
                             Command="{Binding TestCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                             Content="Test"
                             ImageSource="../Resources/Add_16x.png" />
-                        <controls:ImageButton
+                        <controls:RadioImageButton
                             Width="80"
-                            Command="{Binding ChangeInstrumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                            Content="{Binding CurrentInstrument}"
-                            ImageSource="../Resources/CSWorkflowManagerActivity_16x.png" />
+                            Command="{Binding ChangeToBagpipesCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Content="Dudelsack"
+                            GroupName="Instruments"
+                            ImageSource="../Resources/Bagpipes_16x.png"
+                            IsChecked="True" />
+                        <controls:RadioImageButton
+                            Width="80"
+                            Command="{Binding ChangeToSaxophoneCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Content="Saxophon"
+                            GroupName="Instruments"
+                            ImageSource="../Resources/Sax_16x.png" />
+                        <controls:RadioImageButton
+                            Width="80"
+                            Command="{Binding ChangeToFluteCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Content="Querflöte"
+                            GroupName="Instruments"
+                            ImageSource="../Resources/Flute_16x.png" />
                         <controls:ImageButton
                             Width="80"
                             Command="{Binding CreateDocumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
@@ -119,6 +133,56 @@
                             </Border.Style>
                         </Border>
                     </Grid>
+                    <WrapPanel
+                        x:Name="BagpipesButtonPanel"
+                        Background="DarkGray"
+                        Visibility="{Binding CurrentInstrument, Converter={StaticResource InstrumentToVisibilityConverter}, ConverterParameter=Bag, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="g1"
+                            ImageSource="../Resources/Dudelsack/Notes/g1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="a1"
+                            ImageSource="../Resources/Dudelsack/Notes/a1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="h1"
+                            ImageSource="../Resources/Dudelsack/Notes/h1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="c2"
+                            ImageSource="../Resources/Dudelsack/Notes/c2.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="d2"
+                            ImageSource="../Resources/Dudelsack/Notes/d2.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="e2"
+                            ImageSource="../Resources/Dudelsack/Notes/e2.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="f2"
+                            ImageSource="../Resources/Saxophone/Notes/f2.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="g2"
+                            ImageSource="../Resources/Dudelsack/Notes/g2.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="a2"
+                            ImageSource="../Resources/Dudelsack/Notes/a2.png" />
+                    </WrapPanel>
                     <WrapPanel
                         x:Name="FluteButtonPanel"
                         Background="DarkGray"
@@ -273,6 +337,21 @@
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="c3"
                             ImageSource="../Resources/Querfloete/Notes/c3.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="d3"
+                            ImageSource="../Resources/Querfloete/Notes/d3.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="e3"
+                            ImageSource="../Resources/Querfloete/Notes/e3.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="f3"
+                            ImageSource="../Resources/Querfloete/Notes/f3.png" />
                     </WrapPanel>
                     <WrapPanel
                         x:Name="SaxButtonPanel"

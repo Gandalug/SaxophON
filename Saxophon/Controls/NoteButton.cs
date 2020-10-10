@@ -6,13 +6,13 @@ namespace Saxophon.Controls
 {
     public class NoteButton : Button
     {
+        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(
+            nameof(ImageSource), typeof(ImageSource), typeof(NoteButton), new PropertyMetadata(default(ImageSource)));
+
         static NoteButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(NoteButton), new FrameworkPropertyMetadata(typeof(NoteButton)));
         }
-        
-        public static readonly DependencyProperty ImageSourceProperty = DependencyProperty.Register(
-            nameof(ImageSource), typeof(ImageSource), typeof(NoteButton), new PropertyMetadata(default(ImageSource)));
 
         public ImageSource ImageSource
         {
