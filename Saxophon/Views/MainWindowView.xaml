@@ -190,6 +190,11 @@
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
+                            CommandParameter="cis1"
+                            ImageSource="../Resources/Querfloete/Notes/cis1.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
                             CommandParameter="d1"
                             ImageSource="../Resources/Querfloete/Notes/d1.png" />
                         <controls:NoteButton
@@ -262,6 +267,11 @@
                             Command="{Binding AddNoteCommand}"
                             CommandParameter="c2"
                             ImageSource="../Resources/Querfloete/Notes/c2.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="cis2"
+                            ImageSource="../Resources/Querfloete/Notes/cis2.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"

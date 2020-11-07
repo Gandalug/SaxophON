@@ -243,6 +243,11 @@ namespace Saxophon.Services
                 frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/Template.png"),
                        BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
             }
+            else if (notes[count].Note == Note.cis1)
+            {
+                frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/cis1.png"),
+                    BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+            }
             else if (notes[count].Note == Note.d1)
             {
                 frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/d1.png"),
@@ -316,6 +321,11 @@ namespace Saxophon.Services
             else if (notes[count].Note == Note.c2)
             {
                 frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/c2.png"),
+                    BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
+            }
+            else if (notes[count].Note == Note.cis2)
+            {
+                frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/cis2.png"),
                     BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
             }
             else if (notes[count].Note == Note.d2)

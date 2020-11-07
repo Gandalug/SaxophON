@@ -337,5 +337,13 @@
     <Resource Include="Resources\Bagpipes_16x.png" />
     <Resource Include="Resources\Flute_16x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\cis1.png" />
+    <Resource Include="Resources\Querfloete\cis2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Querfloete\Notes\cis1.png" />
+    <Resource Include="Resources\Querfloete\Notes\cis2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
