@@ -28,9 +28,6 @@ namespace Saxophon.ViewModels
 
         public MainWindowViewModel()
         {
-            ChangeToBagpipesCommand = new RelayCommand(ExecuteChangeToBagpipesCommand, CanExecuteChangeToBagpipesCommand);
-            ChangeToSaxophoneCommand = new RelayCommand(ExecuteChangeToSaxophoneCommand, CanExecuteChangeToSaxophoneCommand);
-            ChangeToFluteCommand = new RelayCommand(ExecuteChangeToFluteCommand, CanExecuteChangeToFluteCommand);
             ChangeInstrumentCommand = new RelayCommand(ExecuteChangeInstrumentCommand, CanExecuteChangeInstrumentCommand);
             TestCommand = new RelayCommand(ExecuteTestCommand, CanExecuteTestCommand);
             CreateDocumentCommand = new RelayCommand(ExecuteCreateDocumentCommand, CanExecuteCreateDocumentCommand);
@@ -143,32 +140,6 @@ namespace Saxophon.ViewModels
             IsCooledDown = true;
         }
 
-        public RelayCommand ChangeToBagpipesCommand { get; set; }
-
-        private bool CanExecuteChangeToBagpipesCommand(object parameter)
-        {
-            return true;
-        }
-
-        private void ExecuteChangeToBagpipesCommand(object parameter)
-        {
-            if(CurrentInstrument == Instrument.Dudelsack)
-            {
-                return;
-            }
-
-            if (!Notes.Any())
-            {
-                ChangeInstrument(Instrument.Dudelsack);
-                return;
-            }
-
-            var messageBoxResult = MessageBox.Show("Wenn sie das Instrument wechseln gehen alle bisherigen Änderungen verloren.", "Warnung", MessageBoxButton.OKCancel);
-            if (messageBoxResult == MessageBoxResult.OK)
-            {
-                ChangeInstrument(Instrument.Dudelsack);
-            }
-        }
         public RelayCommand ChangeInstrumentCommand { get; set; }
         private bool CanExecuteChangeInstrumentCommand(object parameter)
         {
@@ -273,7 +244,7 @@ namespace Saxophon.ViewModels
 
             if (CurrentInstrument == Instrument.Dudelsack)
             {
-                if (Notes.Count >= 40)
+                if (Notes.Count >= 160)
                 {
                     MessageBox.Show("Es passt leider nicht mehr auf diese Seite.", "Warnung");
                     return;
@@ -283,7 +254,7 @@ namespace Saxophon.ViewModels
             }
             else if(CurrentInstrument == Instrument.Saxophon)
             {
-                if(Notes.Count >= 40)
+                if(Notes.Count >= 160)
                 {
                     MessageBox.Show("Es passt leider nicht mehr auf diese Seite.","Warnung");
                     return;

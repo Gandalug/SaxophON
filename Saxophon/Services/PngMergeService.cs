@@ -22,8 +22,8 @@ namespace Saxophon.Services
 
             int count = 0;
 
-            int countRows = 4;
-            int countColumns = 10;
+            int countRows = 8;
+            int countColumns = 20;
 
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext drawingContext = drawingVisual.RenderOpen())
@@ -434,8 +434,8 @@ namespace Saxophon.Services
 
             int count = 0;
 
-            int countRows = 4;
-            int countColumns = 10;
+            int countRows = 8;
+            int countColumns = 20;
 
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext drawingContext = drawingVisual.RenderOpen())
