@@ -31,6 +31,7 @@ namespace Saxophon.ViewModels
             ChangeToBagpipesCommand = new RelayCommand(ExecuteChangeToBagpipesCommand, CanExecuteChangeToBagpipesCommand);
             ChangeToSaxophoneCommand = new RelayCommand(ExecuteChangeToSaxophoneCommand, CanExecuteChangeToSaxophoneCommand);
             ChangeToFluteCommand = new RelayCommand(ExecuteChangeToFluteCommand, CanExecuteChangeToFluteCommand);
+            ChangeInstrumentCommand = new RelayCommand(ExecuteChangeInstrumentCommand, CanExecuteChangeInstrumentCommand);
             TestCommand = new RelayCommand(ExecuteTestCommand, CanExecuteTestCommand);
             CreateDocumentCommand = new RelayCommand(ExecuteCreateDocumentCommand, CanExecuteCreateDocumentCommand);
             DeleteAllCommand = new RelayCommand(ExecuteDeleteAllCommand, CanExecuteDeleteAllCommand);
@@ -168,58 +169,32 @@ namespace Saxophon.ViewModels
                 ChangeInstrument(Instrument.Dudelsack);
             }
         }
-
-        public RelayCommand ChangeToSaxophoneCommand { get; set; }
-
-        private bool CanExecuteChangeToSaxophoneCommand(object parameter)
+        public RelayCommand ChangeInstrumentCommand { get; set; }
+        private bool CanExecuteChangeInstrumentCommand(object parameter)
         {
             return true;
         }
-
-        private void ExecuteChangeToSaxophoneCommand(object parameter)
+        private void ExecuteChangeInstrumentCommand(object parameter)
         {
-            if (CurrentInstrument == Instrument.Saxophon)
+            if(parameter == null)
             {
                 return;
             }
+
+            var currentinstrument = CurrentInstrument;
+
+            Enum.TryParse<Instrument>(parameter.ToString(), out var instrument);
 
             if (!Notes.Any())
             {
-                ChangeInstrument(Instrument.Saxophon);
+                ChangeInstrument(instrument);
                 return;
-            }
+            }            
 
             var messageBoxResult = MessageBox.Show("Wenn sie das Instrument wechseln gehen alle bisherigen Änderungen verloren.", "Warnung", MessageBoxButton.OKCancel);
             if (messageBoxResult == MessageBoxResult.OK)
             {
-                ChangeInstrument(Instrument.Saxophon);
-            }
-        }
-
-        public RelayCommand ChangeToFluteCommand { get; set; }
-
-        private bool CanExecuteChangeToFluteCommand(object parameter)
-        {
-            return true;
-        }
-
-        private void ExecuteChangeToFluteCommand(object parameter)
-        {
-            if (CurrentInstrument == Instrument.Querflöte)
-            {
-                return;
-            }
-
-            if (!Notes.Any())
-            {
-                ChangeInstrument(Instrument.Querflöte);
-                return;
-            }
-
-            var messageBoxResult = MessageBox.Show("Wenn sie das Instrument wechseln gehen alle bisherigen Änderungen verloren.", "Warnung", MessageBoxButton.OKCancel);
-            if (messageBoxResult == MessageBoxResult.OK)
-            {
-                ChangeInstrument(Instrument.Querflöte);
+                ChangeInstrument(instrument);
             }
         }
 
@@ -318,7 +293,7 @@ namespace Saxophon.ViewModels
             }
             else if(CurrentInstrument == Instrument.Querflöte)
             {
-                if (Notes.Count >= 45)
+                if (Notes.Count >= 180)
                 {
                     MessageBox.Show("Es passt leider nicht mehr auf diese Seite.", "Warnung");
                     return;
@@ -342,7 +317,7 @@ namespace Saxophon.ViewModels
             IsMessageVisible = true;
         }
 
-        private void ChangeInstrument(Instrument instrument)
+        private void ChangeInstrument(Instrument instrument) 
         {
             Notes.Clear();
             CurrentInstrument = instrument;

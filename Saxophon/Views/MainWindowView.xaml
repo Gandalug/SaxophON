@@ -61,21 +61,27 @@
                             Content="Test"
                             ImageSource="../Resources/Add_16x.png" />
                         <controls:RadioImageButton
+                            x:Name="PART_DudelsackButton"
                             Width="80"
-                            Command="{Binding ChangeToBagpipesCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Command="{Binding ChangeInstrumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            CommandParameter="Dudelsack"
                             Content="Dudelsack"
                             GroupName="Instruments"
                             ImageSource="../Resources/Bagpipes_16x.png"
                             IsChecked="True" />
                         <controls:RadioImageButton
+                            x:Name="PART_SaxophonButton"
                             Width="80"
-                            Command="{Binding ChangeToSaxophoneCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Command="{Binding  ChangeInstrumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            CommandParameter="Saxophon"
                             Content="Saxophon"
                             GroupName="Instruments"
                             ImageSource="../Resources/Sax_16x.png" />
                         <controls:RadioImageButton
+                            x:Name="PART_QuerflöteButton"
                             Width="80"
-                            Command="{Binding ChangeToFluteCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            Command="{Binding  ChangeInstrumentCommand, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                            CommandParameter="Querflöte"
                             Content="Querflöte"
                             GroupName="Instruments"
                             ImageSource="../Resources/Flute_16x.png" />
@@ -140,6 +146,11 @@
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
+                            CommandParameter="leer"
+                            ImageSource="../Resources/Dudelsack/Notes/leer.png" />
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
                             CommandParameter="g1"
                             ImageSource="../Resources/Dudelsack/Notes/g1.png" />
                         <controls:NoteButton
@@ -187,6 +198,11 @@
                         x:Name="FluteButtonPanel"
                         Background="DarkGray"
                         Visibility="{Binding CurrentInstrument, Converter={StaticResource InstrumentToVisibilityConverter}, ConverterParameter=Flute, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="leer"
+                            ImageSource="../Resources/Querfloete/Notes/leer.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"
@@ -367,6 +383,11 @@
                         x:Name="SaxButtonPanel"
                         Background="DarkGray"
                         Visibility="{Binding CurrentInstrument, Converter={StaticResource InstrumentToVisibilityConverter}, ConverterParameter=Sax, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                        <controls:NoteButton
+                            Width="80"
+                            Command="{Binding AddNoteCommand}"
+                            CommandParameter="leer"
+                            ImageSource="../Resources/Saxophone/Notes/leer.png" />
                         <controls:NoteButton
                             Width="80"
                             Command="{Binding AddNoteCommand}"

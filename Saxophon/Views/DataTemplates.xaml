@@ -142,7 +142,7 @@
 
     <DataTemplate DataType="{x:Type viewModels:FluteNoteViewModel}">
         <StackPanel>
-            <Image Width="166" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
+            <Image Width="86" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
         </StackPanel>
     </DataTemplate>
 </ResourceDictionary>

@@ -14,7 +14,7 @@ namespace Saxophon.Services
     {
         public void CreateSaxophonePng(ObservableCollection<NoteViewModel> notes, string _fileName)
         {
-            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/SaxophonLeer.png"),
+            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/leer.png"),
                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
 
             int imageWidth = frame.PixelWidth;
@@ -34,7 +34,7 @@ namespace Saxophon.Services
                     {
                         if (notes.Count <= count)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/SaxophonLeer.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/leer.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (notes[count].Note == Note.c1)
@@ -164,7 +164,7 @@ namespace Saxophon.Services
                         }
                         else
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/SaxophonLeer.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Saxophone/leer.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
 
@@ -188,43 +188,57 @@ namespace Saxophon.Services
 
         public void CreateFlutePng(ObservableCollection<NoteViewModel> notes, string _fileName)
         {
-            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/Template.png"),
+            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/leer.png"),
                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
 
             int imageWidth = frame.PixelWidth;
             int imageHeight = frame.PixelHeight;
 
             int count = 0;
-            int columnOneCount = 0;
-            int columnTwoCount = 15;
-            int columnThreeCount = 30;
-
+            int columnCount1 = 0;
+            int columnCount2 = 30;
+            int columnCount3 = 60;
+            int columnCount4 = 90;
+            int columnCount5 = 120;
+            int columnCount6 = 150;
+            
             int countRows = 0;
             int countColumns = 0;
 
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext drawingContext = drawingVisual.RenderOpen())
             {
-                while (count < 15)
+                while (count < 30)
                 {
                     countColumns = 0;
-                    frame = CreateFluteFrame(columnOneCount, frame, notes);
+                    frame = CreateFluteFrame(columnCount1, frame, notes);
                     drawingContext.DrawImage(frame, new Rect(imageWidth * countColumns, imageHeight * countRows, imageWidth, imageHeight));
+                    columnCount1++;
                     countColumns++;
-                    columnOneCount++;
-                    frame = CreateFluteFrame(columnTwoCount, frame, notes);
+                    frame = CreateFluteFrame(columnCount2, frame, notes);
                     drawingContext.DrawImage(frame, new Rect(imageWidth * countColumns, imageHeight * countRows, imageWidth, imageHeight));
+                    columnCount2++;
                     countColumns++;
-                    columnTwoCount++;
-                    frame = CreateFluteFrame(columnThreeCount, frame, notes);
+                    frame = CreateFluteFrame(columnCount3, frame, notes);
+                    drawingContext.DrawImage(frame, new Rect(imageWidth * countColumns, imageHeight * countRows, imageWidth, imageHeight));
+                    columnCount3++;
+                    countColumns++;
+                    frame = CreateFluteFrame(columnCount4, frame, notes);
+                    drawingContext.DrawImage(frame, new Rect(imageWidth * countColumns, imageHeight * countRows, imageWidth, imageHeight));
+                    columnCount4++;
+                    countColumns++;
+                    frame = CreateFluteFrame(columnCount5, frame, notes);
+                    drawingContext.DrawImage(frame, new Rect(imageWidth * countColumns, imageHeight * countRows, imageWidth, imageHeight));
+                    columnCount5++;
+                    countColumns++;
+                    frame = CreateFluteFrame(columnCount6, frame, notes);
                     drawingContext.DrawImage(frame, new Rect(imageWidth * countColumns, imageHeight * countRows, imageWidth, imageHeight));
                     countRows++;
-                    columnThreeCount++;
                     count++;
                 }
             }
 
-            RenderTargetBitmap targetBitmap = new RenderTargetBitmap(imageWidth * 3, imageHeight * 15, 96, 96, PixelFormats.Pbgra32);
+            RenderTargetBitmap targetBitmap = new RenderTargetBitmap(imageWidth * 6, imageHeight * 30, 96, 96, PixelFormats.Pbgra32);
             targetBitmap.Render(drawingVisual);
 
             PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
@@ -238,9 +252,9 @@ namespace Saxophon.Services
 
         private BitmapFrame CreateFluteFrame(int count, BitmapFrame frame, ObservableCollection<NoteViewModel> notes)
         {
-            if (count >= notes.Count)
+            if (count >= notes.Count || notes[count].Note == Note.leer)
             {
-                frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/Template.png"),
+                frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/leer.png"),
                        BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
             }
             else if (notes[count].Note == Note.cis1)
@@ -405,14 +419,14 @@ namespace Saxophon.Services
             }
             else
             {
-                frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/Template.png"),
+                frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Querfloete/leer.png"),
                     BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
             }
             return frame;
         }
         public void CreateBagpipesPng(ObservableCollection<NoteViewModel> notes, string _fileName)
         {
-            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/Template.png"),
+            BitmapFrame frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/leer.png"),
                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
 
             int imageWidth = frame.PixelWidth;
@@ -432,7 +446,7 @@ namespace Saxophon.Services
                     {
                         if (notes.Count <= count)
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/Template.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/leer.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
                         else if (notes[count].Note == Note.a1)
@@ -482,7 +496,7 @@ namespace Saxophon.Services
                         }
                         else
                         {
-                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/Template.png"),
+                            frame = BitmapDecoder.Create(new Uri("pack://application:,,,/Saxophon;component/Resources/Dudelsack/leer.png"),
                                 BitmapCreateOptions.None, BitmapCacheOption.OnLoad).Frames.First();
                         }
 
